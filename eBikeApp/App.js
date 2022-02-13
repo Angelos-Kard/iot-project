@@ -18,11 +18,18 @@ import Rentals from './components/Rentals';
 import Transactions from './components/Transactions';
 import Settings from './components/Settings';
 
+import colors from "./assets/colors/colors";
+
 import Entypo from 'react-native-vector-icons/Entypo';
 import MCI from 'react-native-vector-icons/MaterialCommunityIcons';
-import colors from "./assets/colors/colors";
+import MI from 'react-native-vector-icons/MaterialIcons';
+import Ionicons from 'react-native-vector-icons/Ionicons';
+import Feather from 'react-native-vector-icons/Feather';
 Entypo.loadFont();
 MCI.loadFont();
+MI.loadFont();
+Ionicons.loadFont();
+Feather.loadFont();
 
 LogBox.ignoreLogs([
   "[react-native-gesture-handler] Seems like you\'re using an old API with gesture components, check out new Gestures system!",
@@ -45,6 +52,10 @@ const TabNavigator = () => {
         tabBarIcon: ({color}) => <MCI name='account' size={32} color={color}/>,
         headerShown: false
       }}/>
+      <Tab.Screen name="Rentals" component={Rentals} options={{
+        tabBarIcon: ({color}) => <MI name='pedal-bike' size={32} color={color}/>,
+        headerShown: false
+      }}/>
       <Tab.Screen 
         name="Home" 
         component={Home} 
@@ -53,8 +64,12 @@ const TabNavigator = () => {
           headerShown: false
         }}
       />
-      <Tab.Screen name="Profile" component={Profile} options={{
-        tabBarIcon: ({color}) => <MCI name='account' size={32} color={color}/>,
+      <Tab.Screen name="Transactions" component={Transactions} options={{
+        tabBarIcon: ({color}) => <Ionicons name='receipt-outline' size={32} color={color}/>,
+        headerShown: false
+      }}/>
+      <Tab.Screen name="Settings" component={Settings} options={{
+        tabBarIcon: ({color}) => <Feather name='settings' size={32} color={color}/>,
         headerShown: false
       }}/>
     </Tab.Navigator>
@@ -83,4 +98,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  tabBar: {
+    backgroundColor: colors.darkGray,
+    borderTopLeftRadius: 20,
+    borderTopRightRadius: 20
+  }
 });
