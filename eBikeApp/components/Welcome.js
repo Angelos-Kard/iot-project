@@ -1,7 +1,10 @@
 import React from 'react';
-import { StatusBar, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { Dimensions, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 // import LinearGradient from 'react-native-linear-gradient';
 import colors from '../assets/colors/colors'
+
+const windowHeight = Dimensions.get('window').height;
+const windowWidth = Dimensions.get('window').width;
 
 function Welcome(props) {
     return (
@@ -31,7 +34,7 @@ const styles = StyleSheet.create({
         justifyContent: 'flex-end'
     },
     button: {
-        width: 350,
+        width: windowWidth * 0.85,
         // height: 50,
         backgroundColor: colors.purple,
         borderRadius: 13,
