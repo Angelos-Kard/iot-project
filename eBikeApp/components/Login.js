@@ -36,8 +36,8 @@ function Login(props) {
                     value={password}
                     placeholder='Κωδικός Πρόσβασης'
                 />
-                <TouchableOpacity style={styles.button}>
-                    <Text style={styles.buttonText}></Text>
+                <TouchableOpacity style={styles.button} onPress={() => props.navigation.navigate('Sign Up', {username: "johndoe", password: "123456"})}>
+                    <Text style={styles.buttonText}>Σύνδεση</Text>
                 </TouchableOpacity>
             </View>
         </View>
@@ -78,6 +78,20 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         borderColor: colors.cyanBorder,
         marginBottom: 30
+    },
+    button: {
+        width:  windowWidth * 0.85,
+        // height: 50,
+        backgroundColor: colors.purple,
+        borderRadius: 13,
+        alignItems: 'center',
+        justifyContent: 'center',
+        marginTop: 20,
+        paddingVertical: 15
+    },
+    buttonText: {
+        fontSize: 20,
+        color: colors.white
     }
 })
 
