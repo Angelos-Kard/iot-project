@@ -1,5 +1,8 @@
-import React from 'react';
-import { Dimensions, ImageBackground, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import React, { useState } from 'react';
+import { Dimensions, Image, ImageBackground, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+
+import AppLoading from 'expo-app-loading';
+import { Asset } from 'expo-asset';
 
 import colors from '../assets/colors/colors';
 
@@ -9,10 +12,39 @@ Entypo.loadFont();
 const windowHeight = Dimensions.get('window').height;
 const windowWidth = Dimensions.get('window').width;
 
-function Home(props) {
-    return (
-        <View style={styles.container}>
 
+
+function Home(props) {
+
+    const [isReady, setIsReady] = useState(false)
+
+    const loadImage = async () => 
+    {
+        const images = [
+            require('../assets/images/parked_bicycles.jpg'),
+            require('../assets/images/secured_bicycle.jpg'),
+            require('../assets/images/secured_bicycle_2.jpg')
+        ]
+        const cacheImages = images.map(image => {
+            return Asset.fromModule(image).downloadAsync();
+        }); 
+        return Promise.all(cacheImages);
+
+    }
+
+    if (!isReady) {
+        return (
+          <AppLoading
+            startAsync={loadImage}
+            onFinish={() => setIsReady(true)}
+            onError={console.warn}
+          />
+        );
+    }
+
+    return (
+        
+        <View style={styles.container}>
             <View style={styles.titleWrapper}>
                 <Text style={styles.title}>Home</Text>
             </View>
