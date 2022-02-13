@@ -9,7 +9,7 @@ import { LogBox } from 'react-native';
 import Welcome from './components/Welcome';
 import SignUp from './components/SignUp';
 import Login from './components/Login';
-import Home from './components/Home'
+import Home from './components/Home';
 import FindABike from './components/FindABike';
 import RentABike from './components/RentABike';
 import SecureABike from './components/SecureABike';
@@ -46,8 +46,10 @@ const TabNavigator = () => {
         "tabBarInactiveTintColor": colors.white,
         tabBarShowLabel: false,
         "tabBarStyle": styles.tabBar,
+        // tabBarInactiveBackgroundColor: colors.black
       }}
       initialRouteName="Home"
+      
     >
       <Tab.Screen name="Profile" component={Profile} options={{
         tabBarIcon: ({color}) => <MCI name='account' size={35} color={color}/>,
@@ -85,7 +87,10 @@ export default function App() {
         <Stack.Screen name='Welcome' component={Welcome} options={{headerShown: false}}/>
         <Stack.Screen name="Sign Up" component={SignUp} options={{headerShown: false}}/>
         <Stack.Screen name="Login" component={Login} options={{headerShown: false}}/>
-        <Stack.Screen name="TabNavigator" component={TabNavigator} options={{headerShown: false}}/>
+        <Stack.Screen name="TabNavigator" component={TabNavigator} options={{headerShown: false}} />
+        <Stack.Screen name="Find a Bike" component={FindABike} options={{headerShown: false}}/>
+        <Stack.Screen name="Rent a Bike" component={RentABike} options={{headerShown: false}}/>
+        <Stack.Screen name="Secure Your Bike" component={SecureABike} options={{headerShown: false}}/>
       </Stack.Navigator>
       <StatusBar barStyle='light-content' backgroundColor={colors.purple}></StatusBar>
     </NavigationContainer>
@@ -93,16 +98,12 @@ export default function App() {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
   tabBar: {
     backgroundColor: colors.darkGray,
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
-    height: 55
+    height: 55,
+    position: 'absolute',
+    // overflow: 'hidden',
   }
 });
