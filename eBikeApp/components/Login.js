@@ -36,7 +36,7 @@ function Login(props) {
                     value={password}
                     placeholder='Κωδικός Πρόσβασης'
                 />
-                <TouchableOpacity style={styles.button} onPress={() => props.navigation.navigate('Sign Up', {username: "johndoe", password: "123456"})}>
+                <TouchableOpacity style={styles.button} onPress={() => props.navigation.navigate('TabNavigator', {username: "johndoe", password: "123456"})}>
                     <Text style={styles.buttonText}>Σύνδεση</Text>
                 </TouchableOpacity>
             </View>
