@@ -45,31 +45,32 @@ const TabNavigator = () => {
         "tabBarActiveTintColor": colors.purple,
         "tabBarInactiveTintColor": colors.white,
         tabBarShowLabel: false,
-        "tabBarStyle": styles.tabBar
+        "tabBarStyle": styles.tabBar,
       }}
+      initialRouteName="Home"
     >
       <Tab.Screen name="Profile" component={Profile} options={{
-        tabBarIcon: ({color}) => <MCI name='account' size={32} color={color}/>,
+        tabBarIcon: ({color}) => <MCI name='account' size={35} color={color}/>,
         headerShown: false
       }}/>
       <Tab.Screen name="Rentals" component={Rentals} options={{
-        tabBarIcon: ({color}) => <MI name='pedal-bike' size={32} color={color}/>,
+        tabBarIcon: ({color}) => <MI name='pedal-bike' size={35} color={color}/>,
         headerShown: false
       }}/>
       <Tab.Screen 
         name="Home" 
         component={Home} 
         options={{
-          tabBarIcon: ({color}) => <Entypo name='home' size={32} color={color}/>,
+          tabBarIcon: ({color}) => <Entypo name='home' size={35} color={color}/>,
           headerShown: false
         }}
       />
       <Tab.Screen name="Transactions" component={Transactions} options={{
-        tabBarIcon: ({color}) => <Ionicons name='receipt-outline' size={32} color={color}/>,
+        tabBarIcon: ({color}) => <Ionicons name='receipt-outline' size={35} color={color}/>,
         headerShown: false
       }}/>
       <Tab.Screen name="Settings" component={Settings} options={{
-        tabBarIcon: ({color}) => <Feather name='settings' size={32} color={color}/>,
+        tabBarIcon: ({color}) => <Feather name='settings' size={35} color={color}/>,
         headerShown: false
       }}/>
     </Tab.Navigator>
@@ -101,6 +102,7 @@ const styles = StyleSheet.create({
   tabBar: {
     backgroundColor: colors.darkGray,
     borderTopLeftRadius: 20,
-    borderTopRightRadius: 20
+    borderTopRightRadius: 20,
+    height: 55
   }
 });
