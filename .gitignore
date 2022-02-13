@@ -1,5 +1,8 @@
 #custom
 eBikeApp/node_modules
+eBikeApp/.expo
+eBikeApp/.expo-shared
+
 
 # Logs
 logs
