@@ -3,6 +3,7 @@ import { Dimensions, Keyboard, StyleSheet, Text, TextInput, ToastAndroid, Toucha
 import colors from '../assets/colors/colors';
 
 import AntDesign from 'react-native-vector-icons/AntDesign';
+import { NetworkContext } from './Context';
 AntDesign.loadFont();
 
 const windowHeight = Dimensions.get('window').height;

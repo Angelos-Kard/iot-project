@@ -1,3 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';  
 
-export const NetworkContext = React.createContext({username: 'john'})
+export const NetworkContext = React.createContext({
+    username: 'joohn',
+})

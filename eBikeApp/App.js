@@ -87,15 +87,17 @@ export default function App() {
 
   return (
     <NavigationContainer>
-      <Stack.Navigator >
-        <Stack.Screen name='Welcome' component={Welcome} options={{headerShown: false}} />
-        <Stack.Screen name="Sign Up" component={SignUp} options={{headerShown: false}}/>
-        <Stack.Screen name="Login" component={Login} options={{headerShown: false}}/>
-        <Stack.Screen name="TabNavigator" component={TabNavigator} options={{headerShown: false}} />
-        <Stack.Screen name="Find a Bike" component={FindABike} options={{headerShown: false}}/>
-        <Stack.Screen name="Rent a Bike" component={RentABike} options={{headerShown: false}}/>
-        <Stack.Screen name="Secure Your Bike" component={SecureABike} options={{headerShown: false}}/>
-      </Stack.Navigator>
+      <NetworkContext.Provider value={{username: 'john'}}>
+        <Stack.Navigator >
+          <Stack.Screen name='Welcome' component={Welcome} options={{headerShown: false}} />
+          <Stack.Screen name="Sign Up" component={SignUp} options={{headerShown: false}}/>
+          <Stack.Screen name="Login" component={Login} options={{headerShown: false}}/>
+          <Stack.Screen name="TabNavigator" component={TabNavigator} options={{headerShown: false}} />
+          <Stack.Screen name="Find a Bike" component={FindABike} options={{headerShown: false}}/>
+          <Stack.Screen name="Rent a Bike" component={RentABike} options={{headerShown: false}}/>
+          <Stack.Screen name="Secure Your Bike" component={SecureABike} options={{headerShown: false}}/>
+        </Stack.Navigator>
+      </NetworkContext.Provider>
       <StatusBar barStyle='light-content' backgroundColor={colors.purple}></StatusBar>
     </NavigationContainer>
   );

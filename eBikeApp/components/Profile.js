@@ -2,13 +2,16 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import colors from '../assets/colors/colors';
 
+
 function Profile(props) {
     return (
+
         <View style={styles.container}>
             <View style={styles.titleWrapper}>
-                <Text style={styles.title}>{console.log(props.route.params)}Profile</Text>
+                <Text style={styles.title}>{props.navigation.getState().routes.find(x => x.name === 'Home').params.username}Profile</Text>
             </View>
         </View>
+
     );
 }
 

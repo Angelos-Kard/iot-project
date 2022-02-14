@@ -8,6 +8,7 @@ import colors from '../assets/colors/colors';
 
 import Entypo from 'react-native-vector-icons/Entypo';
 import { useFocusEffect } from '@react-navigation/native';
+import { NetworkContext } from './Context';
 Entypo.loadFont();
 
 const windowHeight = Dimensions.get('window').height;
@@ -102,56 +103,57 @@ function Home(props) {
           ></AppLoading>
         );
     }
-
     return (
         
-        <View style={styles.container}>
-            <View style={styles.titleWrapper}>
-                <Text style={styles.title}>Home</Text>
-            </View>
-            <View style={styles.buttonsWrapper}>
-                <TouchableOpacity style={[styles.buttonWrapper, {marginTop: 20}]} onPress={() => props.navigation.navigate('Find a Bike')}>
-                    <ImageBackground
-                        source={require('../assets/images/parked_bicycles.jpg')}
-                        style={styles.button}
-                        imageStyle={styles.buttonImage}
-                        blurRadius={4}
-                    >
-                        <View style={styles.textWrapper}>
-                            <Text style={styles.text}>Find a bike</Text>
-                            <Entypo name="chevron-right" size={35} color={colors.white} />
-                        </View>
-                    </ImageBackground>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.buttonWrapper} onPress={() => props.navigation.navigate('Rent a Bike')}>
-                    <ImageBackground
-                        source={require('../assets/images/secured_bicycle.jpg')}
-                        style={styles.button}
-                        imageStyle={styles.buttonImage}
-                        blurRadius={4}
-                    >
-                        <View style={styles.textWrapper}>    
-                            <Text style={styles.text}>Rent a bike</Text>
-                            <Entypo name="chevron-right" size={35} color={colors.white} />
-                        </View>    
-                    </ImageBackground>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.buttonWrapper} onPress={() => props.navigation.navigate('Secure Your Bike')}>
-                    <ImageBackground
-                        source={require('../assets/images/secured_bicycle_2.jpg')}
-                        style={styles.button}
-                        imageStyle={styles.buttonImage}
-                        blurRadius={4}
-                    >
-                        <View style={styles.textWrapper}>    
-                            <Text style={styles.text}>Secure Your bike</Text>
-                            <Entypo name="chevron-right" size={35} color={colors.white} />
-                        </View>    
-                    </ImageBackground>
-                </TouchableOpacity>
-            </View>
+        // <NetworkContext.Provider value={{username: props.route.params.username}}>
+            <View style={styles.container}>
+                <View style={styles.titleWrapper}>
+                    <Text style={styles.title}>Home</Text>
+                </View>
+                <View style={styles.buttonsWrapper}>
+                    <TouchableOpacity style={[styles.buttonWrapper, {marginTop: 20}]} onPress={() => props.navigation.navigate('Find a Bike')}>
+                        <ImageBackground
+                            source={require('../assets/images/parked_bicycles.jpg')}
+                            style={styles.button}
+                            imageStyle={styles.buttonImage}
+                            blurRadius={4}
+                        >
+                            <View style={styles.textWrapper}>
+                                <Text style={styles.text}>Find a bike</Text>
+                                <Entypo name="chevron-right" size={35} color={colors.white} />
+                            </View>
+                        </ImageBackground>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.buttonWrapper} onPress={() => props.navigation.navigate('Rent a Bike')}>
+                        <ImageBackground
+                            source={require('../assets/images/secured_bicycle.jpg')}
+                            style={styles.button}
+                            imageStyle={styles.buttonImage}
+                            blurRadius={4}
+                        >
+                            <View style={styles.textWrapper}>    
+                                <Text style={styles.text}>Rent a bike</Text>
+                                <Entypo name="chevron-right" size={35} color={colors.white} />
+                            </View>    
+                        </ImageBackground>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.buttonWrapper} onPress={() => props.navigation.navigate('Secure Your Bike')}>
+                        <ImageBackground
+                            source={require('../assets/images/secured_bicycle_2.jpg')}
+                            style={styles.button}
+                            imageStyle={styles.buttonImage}
+                            blurRadius={4}
+                        >
+                            <View style={styles.textWrapper}>    
+                                <Text style={styles.text}>Secure Your bike</Text>
+                                <Entypo name="chevron-right" size={35} color={colors.white} />
+                            </View>    
+                        </ImageBackground>
+                    </TouchableOpacity>
+                </View>
 
-        </View>
+            </View>
+        // </NetworkContext.Provider>
     );
 }
 
