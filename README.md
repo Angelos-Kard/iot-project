@@ -12,7 +12,7 @@
 
 ---
 
-## Εγκατάσταση
+## Εγκατάσταση & Χρήση
 
 ### Εφαρμογή
 Για την εγκατάσταση της εφαρμογής:
@@ -22,4 +22,7 @@
   ![QR Code](assets/expo-go.svg) 
 
 ### Server
-Για τον server αξιοποίηθηκε το εργαλείο ThingsBoard
+Για τον server αξιοποίηθηκε το online εργαλείο ThingsBoard (Community Edition).
+Έχουν δημιουργηθεί δύο dashboards:
+- [Admin Page](https://demo.thingsboard.io/dashboard/0c3b6910-8864-11ec-b525-af1085444370?publicId=081eb8e0-59d5-11ec-928c-d16ac1689d62): Διαθέτει τις λειτουργίες, στις οποίες έχουν πρόσβαση οι διαχειριστές της υπηρεσίας
+- [Customer Page](https://demo.thingsboard.io/dashboard/176adff0-8864-11ec-b525-af1085444370?publicId=081eb8e0-59d5-11ec-928c-d16ac1689d62): Διαθέτει τις λειτουργίες, στις οποίες έχουν πρόσβαση οι χρήστες της υπηρεσίας
