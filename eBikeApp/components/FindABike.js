@@ -1,7 +1,7 @@
 import { useFocusEffect } from '@react-navigation/native';
 import React, { useEffect, useState } from 'react';
 import { Dimensions, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import MapView, { Marker } from 'react-native-maps';
+import MapView, { Callout, Marker } from 'react-native-maps';
 import * as Location from 'expo-location'
 
 import AntDesign from 'react-native-vector-icons/AntDesign';
@@ -9,6 +9,10 @@ AntDesign.loadFont();
 
 import colors from '../assets/colors/colors';
 import AppLoading from 'expo-app-loading';
+
+const windowWidth = Dimensions.get().width;
+const windowHeight = Dimensions.get().height;
+
 
 function FindABike(props) {
     const [location, setLocation] = useState({latitude: null, longtitude: null, latitudeDelta: 0.0622, longitudeDelta: 0.0421});
@@ -89,7 +93,10 @@ function FindABike(props) {
             <View style={{alignItems: 'center'}}>
                 <MapView style={styles.map} initialRegion={location} followsUserLocation={true} showsMyLocationButton={true} showsUserLocation={true}>
                     {/* {console.log(bikes)} */}
-                    {bikes.length !== 0 ? bikes.map(bike => <Marker key={bike.id} coordinate={{latitude: Number(bike.latitude), longitude: Number(bike.longtitude)}} title={`Bike ${bike.id}`} description={`Battery level: ${bike.batteryLevel} | Speed: ${bike.speed} | Locked: ${bike.locked === 1?'Yes':'No'}`} pinColor={bike.locked === 1?'green':'red'} ></Marker>) : true}
+                    {bikes.length !== 0 ? bikes.map(bike => 
+                        <Marker key={bike.id} coordinate={{latitude: Number(bike.latitude), longitude: Number(bike.longtitude)}} title={`Bike ${bike.id}`} description={`Battery level: ${bike.batteryLevel} | Speed: ${bike.speed} | Locked: ${bike.locked === 1?'Yes':'No'}`} pinColor={bike.locked === 1?'green':'red'}  >
+                        </Marker>) 
+                    : true}
                 </MapView>
                 {/* {!errorMsg ? <MapView style={styles.map} initialRegion={location} followsUserLocation={true} showsMyLocationButton={true} showsUserLocation={true} /> : <Text style={{color: colors.white}}>{text}</Text>} */}
             </View>
@@ -121,6 +128,12 @@ const styles = StyleSheet.create({
         width: Dimensions.get('window').width,
         height: Dimensions.get('window').height * 0.85,
     },
+    tooltipWrapper: {
+        // position: 'absolute',
+        width: 100,
+        height: 50,
+        backgroundColor: colors.boxGray
+    }
 })
 
 export default FindABike;

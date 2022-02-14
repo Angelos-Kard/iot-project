@@ -24,7 +24,7 @@ function Login(props) {
                 method: 'POST',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify({username: username, password: password})
-            }).then(res => res.json()).then(res=>{if (res.length === 1) {console.log(res); props.navigation.navigate('TabNavigator', {screen: 'Home', params: res[0]});} else ToastAndroid.show("Wrong username or password", ToastAndroid.SHORT)})
+            }).then(res => res.json()).then(res=>{if (res.length === 1) props.navigation.navigate('TabNavigator', {screen: 'Home', params: res[0]}); else ToastAndroid.show("Wrong username or password", ToastAndroid.SHORT)})
     }
 
     return (
