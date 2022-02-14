@@ -25,6 +25,7 @@ import MCI from 'react-native-vector-icons/MaterialCommunityIcons';
 import MI from 'react-native-vector-icons/MaterialIcons';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Feather from 'react-native-vector-icons/Feather';
+import { NetworkContext } from "./components/Context";
 Entypo.loadFont();
 MCI.loadFont();
 MI.loadFont();

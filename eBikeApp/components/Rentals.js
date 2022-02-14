@@ -1,8 +1,13 @@
 import React from 'react';
-import { Image, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { Image, ScrollView, StyleSheet, Text, ToastAndroid, TouchableOpacity, View } from 'react-native';
 import colors from '../assets/colors/colors';
 
 function Rentals(props) {
+
+    const deleteElement = () => {
+        ToastAndroid.show("Rental was ended successfully", ToastAndroid.SHORT)
+    }
+
     return (
         <View style={styles.container}>
             <View style={styles.titleWrapper}>
@@ -44,7 +49,7 @@ function Rentals(props) {
                             <Text style={styles.rentalText}>Air Pressure: 46 PSI</Text>
                         </View>
                         <View style={styles.thirdRow}>
-                            <TouchableOpacity style={styles.endButton}>
+                            <TouchableOpacity style={styles.endButton} onPress={deleteElement}>
                                 <Text style={styles.textButton}>End Rental</Text>
                             </TouchableOpacity>
                         </View>
@@ -100,13 +105,13 @@ const styles = StyleSheet.create({
     verticalLine: {
         height: "100%",
         width: 1,
-        backgroundColor: colors.white
+        backgroundColor: colors.cyanBorder
     },
     horizontalLine: {
         marginVertical: 10,
         width: "100%",
         height: 1,
-        backgroundColor: colors.white
+        backgroundColor: colors.cyanBorder
     },
     secondRow: {
         flexDirection: 'row',

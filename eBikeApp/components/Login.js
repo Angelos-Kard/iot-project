@@ -1,5 +1,5 @@
 import React from 'react';
-import { Dimensions, StyleSheet, Text, TextInput, ToastAndroid, TouchableOpacity, View } from 'react-native';
+import { Dimensions, Keyboard, StyleSheet, Text, TextInput, ToastAndroid, TouchableOpacity, View } from 'react-native';
 import colors from '../assets/colors/colors';
 
 import AntDesign from 'react-native-vector-icons/AntDesign';
@@ -10,13 +10,15 @@ const windowWidth = Dimensions.get('window').width;
 
 
 function Login(props) {
-    const [username, setUsername] = React.useState()
-    const [password, setPassword] = React.useState()
+    const [username, setUsername] = React.useState('')
+    const [password, setPassword] = React.useState('')
 
     const checkUser = ()=>{
-        if (username.length===0) ToastAndroid.show("Username cannot be empty", ToastAndroid.SHORT)
-        else if (password.length===0) ToastAndroid.show("Password cannot be empty", ToastAndroid.SHORT)
-        else props.navigation.navigate('TabNavigator', {screen: 'Home', params: {username: username}})
+        Keyboard.dismiss();
+        // if (username.length===0) ToastAndroid.show("Username cannot be empty", ToastAndroid.SHORT);
+        // else if (password.length===0) ToastAndroid.show("Password cannot be empty", ToastAndroid.SHORT);
+        // else 
+            props.navigation.navigate('TabNavigator', {screen: 'Home', params: {username: 'Angelos'}});
             // fetch('https://dummy-server-iot.herokuapp.com/users', {
             //     method: 'POST',
             //     headers: {'Content-Type': 'application/json'},
@@ -38,17 +40,17 @@ function Login(props) {
                     style={styles.textInput}
                     onChangeText={(text) => setUsername(text)}
                     value={username}
-                    placeholder='Όνομα Χρήστη'
+                    placeholder='Username'
                 />
                 <TextInput
                     style={styles.textInput}
                     secureTextEntry={true}
                     onChangeText={(text) => setPassword(text)}
                     value={password}
-                    placeholder='Κωδικός Πρόσβασης'
+                    placeholder='Password'
                 />
                 <TouchableOpacity style={styles.button} onPress={checkUser}>
-                    <Text style={styles.buttonText}>Σύνδεση</Text>
+                    <Text style={styles.buttonText}>Login</Text>
                 </TouchableOpacity>
             </View>
         </View>

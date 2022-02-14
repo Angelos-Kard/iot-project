@@ -14,7 +14,7 @@ function Welcome(props) {
             </View> */}
 
             <TouchableOpacity style={styles.button} onPress={() => props.navigation.navigate('Sign Up')}>
-                <Text style={styles.buttonText}>Sign Up</Text>
+                <Text style={styles.buttonText}>Register</Text>
             </TouchableOpacity>
 
             <TouchableOpacity style={[styles.button, {marginBottom: 75}]} onPress={() => props.navigation.navigate("Login")}>
