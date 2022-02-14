@@ -28,3 +28,11 @@
 - [Customer Page](https://demo.thingsboard.io/dashboard/176adff0-8864-11ec-b525-af1085444370?publicId=081eb8e0-59d5-11ec-928c-d16ac1689d62): Διαθέτει τις λειτουργίες, στις οποίες έχουν πρόσβαση οι χρήστες της υπηρεσίας
 
 ### Bike Implementation
+Τα αρχεία .py του φακέλου [`./bike-implementation-communication`](bike-implementation-communication/) προσομοιώνουν τους  αισθητήρες ενός ποδηλάτου και στέλνουν δεδομένα στον server. Αν "τρέξουμε" τα αρχεία [project1.py](bike-implementation-communication/project1.py) και [project2.py](bike-implementation-communication/project2.py), τότε προσομοιώνουμε τη λειτουργία των ποδηλάτων 1 και 2. 
+<br>
+Απαραίτητη είναι η εγκατάσταση των βιβλιοθήκων:
+- paho.mqtt.client
+- json
+- time
+- datetime
+- random
