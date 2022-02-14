@@ -1,7 +1,7 @@
 import { useFocusEffect } from '@react-navigation/native';
 import React, { useEffect, useState } from 'react';
 import { Dimensions, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import MapView from 'react-native-maps';
+import MapView, { Marker } from 'react-native-maps';
 import * as Location from 'expo-location'
 
 import AntDesign from 'react-native-vector-icons/AntDesign';
@@ -54,7 +54,8 @@ function FindABike(props) {
         React.useCallback(()=>{
             fetch("https://dummy-server-iot.herokuapp.com/bikes").then(res=>res.json()).then(res=>{
                 setBikes(res)
-                console.log(res)
+                // console.log(bikes)
+                // console.log(res)
             })
         }, [])
     );
@@ -86,7 +87,10 @@ function FindABike(props) {
             </View>
             {/* <Text style={{color: colors.white}}>{text}</Text> */}
             <View style={{alignItems: 'center'}}>
-            <MapView style={styles.map} initialRegion={location} followsUserLocation={true} showsMyLocationButton={true} showsUserLocation={true} />
+                <MapView style={styles.map} initialRegion={location} followsUserLocation={true} showsMyLocationButton={true} showsUserLocation={true}>
+                    {/* {console.log(bikes)} */}
+                    {bikes.length !== 0 ? bikes.map(bike => <Marker key={bike.id} coordinate={{latitude: Number(bike.latitude), longitude: Number(bike.longtitude)}} title={`Bike ${bike.id}`} description={`Battery level: ${bike.batteryLevel} | Speed: ${bike.speed} | Locked: ${bike.locked === 1?'Yes':'No'}`} pinColor={bike.locked === 1?'green':'red'} ></Marker>) : true}
+                </MapView>
                 {/* {!errorMsg ? <MapView style={styles.map} initialRegion={location} followsUserLocation={true} showsMyLocationButton={true} showsUserLocation={true} /> : <Text style={{color: colors.white}}>{text}</Text>} */}
             </View>
             
