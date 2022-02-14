@@ -3,7 +3,7 @@ eBikeApp/node_modules
 eBikeApp/.expo
 eBikeApp/.expo-shared
 mobile-app/
-
+server
 
 # Logs
 logs
@@ -82,4 +82,4 @@ typings/
 
 # FuseBox cache
 .fusebox/
-server
+
