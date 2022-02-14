@@ -1,5 +1,5 @@
 import React from 'react';
-import { Dimensions, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import { Dimensions, StyleSheet, Text, TextInput, ToastAndroid, TouchableOpacity, View } from 'react-native';
 import colors from '../assets/colors/colors';
 
 import AntDesign from 'react-native-vector-icons/AntDesign';
@@ -12,6 +12,17 @@ const windowWidth = Dimensions.get('window').width;
 function Login(props) {
     const [username, setUsername] = React.useState()
     const [password, setPassword] = React.useState()
+
+    const checkUser = ()=>{
+        if (username.length===0) ToastAndroid.show("Username cannot be empty", ToastAndroid.SHORT)
+        else if (password.length===0) ToastAndroid.show("Password cannot be empty", ToastAndroid.SHORT)
+        else props.navigation.navigate('TabNavigator', {screen: 'Home', params: {username: username}})
+            // fetch('https://dummy-server-iot.herokuapp.com/users', {
+            //     method: 'POST',
+            //     headers: {'Content-Type': 'application/json'},
+            //     body: JSON.stringify({username: username, password: password})
+            // }).then(res => res.json()).then(res=>{if (res[0].plithos == 1) props.navigation.navigate('TabNavigator', {username: username}); else ToastAndroid.show("Wrong username or password", ToastAndroid.SHORT)})
+    }
 
     return (
         <View style={styles.container}>
@@ -36,7 +47,7 @@ function Login(props) {
                     value={password}
                     placeholder='Κωδικός Πρόσβασης'
                 />
-                <TouchableOpacity style={styles.button} onPress={() => props.navigation.navigate('TabNavigator', {username: "johndoe", password: "123456"})}>
+                <TouchableOpacity style={styles.button} onPress={checkUser}>
                     <Text style={styles.buttonText}>Σύνδεση</Text>
                 </TouchableOpacity>
             </View>

@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Dimensions, Image, ImageBackground, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import React, { Component, useState } from 'react';
+import { Alert, BackHandler, Dimensions, Image, ImageBackground, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 import AppLoading from 'expo-app-loading';
 import { Asset } from 'expo-asset';
@@ -7,6 +7,7 @@ import { Asset } from 'expo-asset';
 import colors from '../assets/colors/colors';
 
 import Entypo from 'react-native-vector-icons/Entypo';
+import { useFocusEffect } from '@react-navigation/native';
 Entypo.loadFont();
 
 const windowHeight = Dimensions.get('window').height;
@@ -16,8 +17,8 @@ const windowWidth = Dimensions.get('window').width;
 
 function Home(props) {
 
-    const [isReady, setIsReady] = useState(false)
-
+    const [isReady, setIsReady] = useState(false);
+    // const [dbData, setDbData] = useState([{id:0, user: 'john', data: 'doe'}]);
     const loadImage = async () => 
     {
         const images = [
@@ -32,13 +33,73 @@ function Home(props) {
 
     }
 
+    // fetch('https://dummy-server-iot.herokuapp.com/dummy').then(res => res.json()).then(res=>setDbData(res))
+
+    // const backAction = () => {
+    //     Alert.alert('Log out', "Are you sure you want to log out?", [
+    //         {
+    //             text: 'Cancel',
+    //             onPress: ()=> null,
+    //             style: 'cancel'
+    //         },
+    //         {
+    //             text: 'Yes',
+    //             onPress: () => props.navigation.navigate('Login'),
+    //         }
+    //     ]);
+    //     return true;
+    // }
+
+
+    // useEffect(()=> {
+    //     BackHandler.addEventListener('hardwareBackPress', backAction)
+
+    //     return () => BackHandler.removeEventListener('hardwareBackPress', backAction)
+    // }, [])
+
+    
+
+    useFocusEffect(
+        React.useCallback(() => {
+          const onBackPress = () => {
+            Alert.alert('Log out', "Are you sure you want to log out?", [
+                {
+                    text: 'Cancel',
+                    onPress: ()=> null,
+                    style: 'cancel'
+                },
+                {
+                    text: 'Yes',
+                    onPress: () => props.navigation.navigate('Login'),
+                }
+            ]);
+            return true;
+          };
+    
+          BackHandler.addEventListener('hardwareBackPress', onBackPress);
+    
+          return () =>
+            BackHandler.removeEventListener('hardwareBackPress', onBackPress);
+        }, [])
+    );
+
+    // useFocusEffect(
+    //     React.useCallback(()=>{
+    //         let isActive = true;
+
+    //         fetch('https://dummy-server-iot.herokuapp.com/dummy').then(res => res.json()).then(res=> {if (isActive) setDbData(res)})
+
+    //         return () => {isActive=false};
+    //     }, [])
+    // )
+
     if (!isReady) {
         return (
           <AppLoading
             startAsync={loadImage}
             onFinish={() => setIsReady(true)}
             onError={console.warn}
-          />
+          ></AppLoading>
         );
     }
 
@@ -54,7 +115,7 @@ function Home(props) {
                         source={require('../assets/images/parked_bicycles.jpg')}
                         style={styles.button}
                         imageStyle={styles.buttonImage}
-                        blurRadius={6}
+                        blurRadius={4}
                     >
                         <View style={styles.textWrapper}>
                             <Text style={styles.text}>Find a bike</Text>
@@ -67,7 +128,7 @@ function Home(props) {
                         source={require('../assets/images/secured_bicycle.jpg')}
                         style={styles.button}
                         imageStyle={styles.buttonImage}
-                        blurRadius={6}
+                        blurRadius={4}
                     >
                         <View style={styles.textWrapper}>    
                             <Text style={styles.text}>Rent a bike</Text>
@@ -80,7 +141,7 @@ function Home(props) {
                         source={require('../assets/images/secured_bicycle_2.jpg')}
                         style={styles.button}
                         imageStyle={styles.buttonImage}
-                        blurRadius={6}
+                        blurRadius={4}
                     >
                         <View style={styles.textWrapper}>    
                             <Text style={styles.text}>Secure Your bike</Text>
