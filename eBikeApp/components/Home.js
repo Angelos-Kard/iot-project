@@ -116,7 +116,7 @@ function Home(props) {
                             source={require('../assets/images/parked_bicycles.jpg')}
                             style={styles.button}
                             imageStyle={styles.buttonImage}
-                            blurRadius={4}
+                            blurRadius={3}
                         >
                             <View style={styles.textWrapper}>
                                 <Text style={styles.text}>Find a bike</Text>
@@ -129,7 +129,7 @@ function Home(props) {
                             source={require('../assets/images/secured_bicycle.jpg')}
                             style={styles.button}
                             imageStyle={styles.buttonImage}
-                            blurRadius={4}
+                            blurRadius={3}
                         >
                             <View style={styles.textWrapper}>    
                                 <Text style={styles.text}>Rent a bike</Text>
@@ -142,7 +142,7 @@ function Home(props) {
                             source={require('../assets/images/secured_bicycle_2.jpg')}
                             style={styles.button}
                             imageStyle={styles.buttonImage}
-                            blurRadius={4}
+                            blurRadius={3}
                         >
                             <View style={styles.textWrapper}>    
                                 <Text style={styles.text}>Secure Your bike</Text>

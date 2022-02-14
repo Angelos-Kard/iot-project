@@ -16,15 +16,15 @@ function Login(props) {
 
     const checkUser = ()=>{
         Keyboard.dismiss();
-        // if (username.length===0) ToastAndroid.show("Username cannot be empty", ToastAndroid.SHORT);
-        // else if (password.length===0) ToastAndroid.show("Password cannot be empty", ToastAndroid.SHORT);
-        // else 
-            props.navigation.navigate('TabNavigator', {screen: 'Home', params: {username: 'Angelos'}});
-            // fetch('https://dummy-server-iot.herokuapp.com/users', {
-            //     method: 'POST',
-            //     headers: {'Content-Type': 'application/json'},
-            //     body: JSON.stringify({username: username, password: password})
-            // }).then(res => res.json()).then(res=>{if (res[0].plithos == 1) props.navigation.navigate('TabNavigator', {username: username}); else ToastAndroid.show("Wrong username or password", ToastAndroid.SHORT)})
+        if (username.length===0) ToastAndroid.show("Username cannot be empty", ToastAndroid.SHORT);
+        else if (password.length===0) ToastAndroid.show("Password cannot be empty", ToastAndroid.SHORT);
+        else 
+            // props.navigation.navigate('TabNavigator', {screen: 'Home', params: {username: username}});
+            fetch('https://dummy-server-iot.herokuapp.com/users', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({username: username, password: password})
+            }).then(res => res.json()).then(res=>{if (res.length === 1) {console.log(res); props.navigation.navigate('TabNavigator', {screen: 'Home', params: res[0]});} else ToastAndroid.show("Wrong username or password", ToastAndroid.SHORT)})
     }
 
     return (

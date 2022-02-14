@@ -14,6 +14,7 @@ function FindABike(props) {
     const [location, setLocation] = useState({latitude: null, longtitude: null, latitudeDelta: 0.0622, longitudeDelta: 0.0421});
     const [errorMsg, setErrorMsg] = useState(null);
     const [isReady, setIsReady] = useState(false)
+    const [bikes, setBikes] = useState([]);
 
     // useFocusEffect(
     //     React.useCallback(async ()=>{
@@ -48,6 +49,15 @@ function FindABike(props) {
     //       lastLong: lastLong || this.state.lastLong
     //     });
     // }
+
+    useFocusEffect(
+        React.useCallback(()=>{
+            fetch("https://dummy-server-iot.herokuapp.com/bikes").then(res=>res.json()).then(res=>{
+                setBikes(res)
+                console.log(res)
+            })
+        }, [])
+    );
 
     if (!isReady) {
         return (
